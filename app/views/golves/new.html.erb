@@ -1,2 +1,19 @@
-<h1>Golves#new</h1>
-<p>Find me in app/views/golves/new.html.erb</p>
+<div class="container golves-new">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <%= form_with model: @golf, url: new_golf_path, local: true do |f| %>
+        <div class="form-group">
+          <label for="exampleInputTitle">募集タイトル</label>
+          <%= f.text_field :title , class: "form-control", placeholder: "タイトルを入力してください" %>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputDetail">募集内容詳細</label>
+          <%= f.text_area :content , class: "form-control", placeholder: "例：ゴルフ仲間を募集します！" %>
+        </div>
+        <div class="intro-button text-center">
+           <%= f.submit "募集を作る", class: "btn btn-xl" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
