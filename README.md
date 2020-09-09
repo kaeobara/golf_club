@@ -1,24 +1,31 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| email           | string | null: false |
+|                 |        |unique: true |#重複を防ぐ
+| password        | string | null: false |
 
-* Ruby version
+--has_many :golves
 
-* System dependencies
+##golevs テーブル
 
-* Configuration
+| Column          | Type      | Options          |
+| --------------- | ------    | -----------      |
+| title           | string    | null: false      |
+| contents        | string    | null: false      |
+| user            | references| foreign_key: true|
 
-* Database creation
+--belongs_to :user
+--has_many :entries
 
-* Database initialization
+##entriesテーブル
 
-* How to run the test suite
+| Column          | Type       | Options           |
+| --------------- | ------     | -----------       |
+| message         | string     | null: false       |
+| golf            | references | foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+--belongs_to :golf
